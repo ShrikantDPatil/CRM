@@ -38,13 +38,15 @@ public class ContactsPageTest extends TestBase {
 	}
 
 	@BeforeMethod
-	public void setUp() {
+	public void setUp() throws InterruptedException {
 		initialization();
 		testUtil = new TestUtil();
 		contactsPage = new ContactsPage();
 		loginPage = new LoginPage();
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		Thread.sleep(10000);
 		contactsPage = homePage.clickOnContactsLink();
+		Thread.sleep(10000);
 
 	}
 
@@ -55,7 +57,7 @@ public class ContactsPageTest extends TestBase {
 
 	@Test(priority = 2)
 	public void selectSingleContactsTest() throws InterruptedException {
-		contactsPage.selectContactsByName("shrikant patil");
+		contactsPage.selectContactsByName("Tom Peter");
 	}
 
 	@Test(priority = 3)

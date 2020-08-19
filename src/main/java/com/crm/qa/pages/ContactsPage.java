@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import com.crm.qa.base.TestBase;
 
@@ -38,7 +39,7 @@ public class ContactsPage extends TestBase {
 		return contactsLabel.isDisplayed();
 	}
 
-	public void selectContactsByName(String name){
+	public void selectContactsByName(String name) throws InterruptedException{
 
 		int rowscount = driver.findElements(By.xpath("//*[@id=\"ui\"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr")).size();
 		int columncount = driver.findElements(By.xpath("//*[@id=\"ui\"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[1]/td")).size();
@@ -47,17 +48,21 @@ public class ContactsPage extends TestBase {
 		selectcontact: for (int i = 1; i <= rowscount; i++) {
 		for (int j = 1; j <= columncount; j++) {
 		String actualString = driver.findElement(By.xpath("//*[@id=\"ui\"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[" + i + "]/td[" + j + "]")).getText();
-				if (actualString.contentEquals(name)) {
+				
+		if (actualString.contentEquals(name)) {
 				System.out.println("Found Expected Name");
+				Thread.sleep(5000);
 				driver.findElement(By.xpath("//*[@id=\"ui\"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[" + i + "]/td[1]")).click();
+				Thread.sleep(5000);
 				break selectcontact;
 
 				}
 			}
+		System.out.println("No Record Found");
 		}
 	}
 	
-	public void deleteContactsByName(String name){
+	public void deleteContactsByName(String name) throws InterruptedException{
 		
 		int rowscount = driver.findElements(By.xpath("//*[@id=\"ui\"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr")).size();
 		int columncount = driver.findElements(By.xpath("//*[@id=\"ui\"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[1]/td")).size();
@@ -68,23 +73,27 @@ public class ContactsPage extends TestBase {
 				String actualString = driver.findElement(By.xpath("//*[@id=\"ui\"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[" + i + "]/td[" + j + "]")).getText();
 				if (actualString.contentEquals(name)) {
 					System.out.println("Found Expected Name");
+					Thread.sleep(5000);
 					driver.findElement(By.xpath("//*[@id=\"ui\"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[" + i + "]/td[8]/div/button")).click();
+					Thread.sleep(7000);	
 					deletecontact.click();
-					driver.navigate().refresh();
+					Thread.sleep(5000);
 					break deletecontact;
 
 				}
 			}
-		}
+			System.out.println("No Record Found");
+			}
 	}
 
-	public void createNewContact(String ftName, String ltName){
+	public void createNewContact(String ftName, String ltName) throws InterruptedException{
 
 		NewBtnContLink.click();
 		System.out.println("Clicked on New Button");
 		firstName.sendKeys(ftName);
 		lastName.sendKeys(ltName);
 		saveBtn.click();
+		Thread.sleep(10000);
 		
 	}
 
