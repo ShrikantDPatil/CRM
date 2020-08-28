@@ -3,21 +3,10 @@
 <suite name="Failed suite [FREE CRM Application Test Automation Test Suite]" guice-stage="DEVELOPMENT">
   <test name="Free CRM App Test Cases(failed)">
     <classes>
-      <class name="com.crm.qa.testcases.LoginPageTest">
-        <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="VerifyLoginBtnTest"/>
-          <include name="VerifypasswordfieldTest"/>
-          <include name="loginTest"/>
-        </methods>
-      </class> <!-- com.crm.qa.testcases.LoginPageTest -->
       <class name="com.crm.qa.testcases.ContactsPageTest">
         <methods>
-          <include name="deleteMultipleContactsTest"/>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="validateCreateNewContact"/>
           <include name="deleteSingleContactsTest"/>
         </methods>
       </class> <!-- com.crm.qa.testcases.ContactsPageTest -->

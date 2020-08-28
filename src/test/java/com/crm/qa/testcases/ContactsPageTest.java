@@ -89,9 +89,7 @@ public class ContactsPageTest extends TestBase {
 		// contactsPage.createNewContact("Mr.", "Tom", "Peter", "Google");
 		// Thread.sleep(10000);
 		contactsPage.createNewContact(firstName, lastName);
-
 	}
-
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();
